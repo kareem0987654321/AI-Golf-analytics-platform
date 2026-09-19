@@ -58,6 +58,8 @@ def create_ai_context(
     analysis
 ):
 
+    current_round = player_data["current_round"]
+
     context = f"""
 You are an AI golf performance coach.
 
@@ -69,21 +71,58 @@ Handicap Index:
 
 Low Handicap:
 {player_data['handicap']['low_handicap']}
+
+CURRENT ROUND:
+
+Course:
+{current_round['course']}
+
+Date:
+{current_round['date']}
+
+Total Score:
+{current_round['total_score']}
+
+Course Par:
+{current_round['course_par']}
+
+Score Relative to Par:
+{current_round['total_score'] - current_round['course_par']:+d}
+
+Course Rating:
+{current_round['course_rating']}
+
+Slope Rating:
+{current_round['slope_rating']}
+
+PCC:
+{current_round['pcc']}
+
+Hole-by-Hole Scores:
+{current_round['scores']}
+
+Hole-by-Hole Pars:
+{current_round['pars']}
 """
 
     if player_data["strokes_gained"] is None:
 
         context += """
 
-Strokes Gained:
+STROKES GAINED:
 
 The player did not provide shot-by-shot
 Strokes Gained data for this round.
 
-Use the available handicap and score
-information for your analysis.
+Analyze the round using the available score,
+course difficulty, handicap, and hole-by-hole
+scoring information.
 
 Do not invent Strokes Gained statistics.
+
+Do not claim that course, score, handicap,
+or hole-by-hole information is missing when
+it is provided above.
 """
 
     else:
@@ -94,7 +133,7 @@ Do not invent Strokes Gained statistics.
 
         context += f"""
 
-Average Strokes Gained:
+AVERAGE STROKES GAINED:
 
 Off the Tee:
 {averages['off_the_tee']:.2f}
@@ -120,6 +159,73 @@ Strongest Area:
 Weakest Area:
 {analysis['weakest_area']}
 ({analysis['weakest_value']:.2f})
+"""
+
+    ml_analysis = player_data.get(
+        "ml_analysis"
+    )
+
+    if ml_analysis is not None:
+
+        most_common = (
+            ml_analysis["most_common_pattern"]
+        )
+
+        context += f"""
+
+MACHINE LEARNING PERFORMANCE ANALYSIS:
+
+A K-Means clustering model analyzed the player's
+historical Strokes Gained rounds and identified
+recurring performance patterns.
+
+Most Common Pattern:
+Pattern {most_common['pattern_number']}
+
+Frequency:
+{most_common['round_count']} rounds
+({most_common['percentage']:.1f}%)
+
+Average Strokes Gained profile for this pattern:
+
+Off the Tee:
+{most_common['off_the_tee']:.2f}
+
+Approach:
+{most_common['approach']:.2f}
+
+Around the Green:
+{most_common['around_the_green']:.2f}
+
+Putting:
+{most_common['putting']:.2f}
+
+Strongest Area:
+{most_common['strongest_area']}
+({most_common['strongest_value']:.2f})
+
+Weakest Area:
+{most_common['weakest_area']}
+({most_common['weakest_value']:.2f})
+
+Use this machine-learning analysis when discussing
+recurring performance tendencies.
+
+Clearly distinguish recurring historical patterns
+from the player's performance in the current round.
+
+Do not invent patterns that are not supported by
+the provided machine-learning results.
+"""
+
+    else:
+
+        context += """
+
+MACHINE LEARNING PERFORMANCE ANALYSIS:
+
+There are not yet enough historical Strokes Gained
+rounds to identify recurring performance patterns.
 """
 
     return context
