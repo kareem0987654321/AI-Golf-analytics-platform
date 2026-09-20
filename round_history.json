@@ -1,0 +1,88 @@
+[
+    {
+        "course": "Pebble Beach Golf Links",
+        "date": "2026-04-18",
+        "score": 72,
+        "adjusted_score": 72,
+        "course_rating": 74.9,
+        "slope_rating": 144,
+        "pcc": 0
+    },
+    {
+        "course": "Pebble Beach Golf Links",
+        "date": "2026-04-09",
+        "score": 75,
+        "adjusted_score": 74,
+        "course_rating": 74.9,
+        "slope_rating": 144,
+        "pcc": 0
+    },
+    {
+        "course": "Pebble Beach Golf Links",
+        "date": "2026-05-06",
+        "score": 74,
+        "adjusted_score": 74,
+        "course_rating": 74.9,
+        "slope_rating": 144,
+        "pcc": 0,
+        "strokes_gained": {
+            "total": 1.3,
+            "off_the_tee": -4.1,
+            "approach": 2.5,
+            "around_the_green": 3.1,
+            "putting": -1.3
+        }
+    },
+    {
+        "course": "Pebble Beach Golf Links",
+        "date": "2026-01-01",
+        "score": 72,
+        "adjusted_score": 72,
+        "course_rating": 74.9,
+        "slope_rating": 144,
+        "pcc": 0,
+        "strokes_gained": {
+            "total": 5.040000000000003,
+            "off_the_tee": -5.399999999999997,
+            "approach": 23.04,
+            "around_the_green": 0.0,
+            "putting": -12.599999999999996
+        }
+    },
+    {
+        "course": "Pebble Beach Golf Links",
+        "date": "2026-03=05",
+        "score": 72,
+        "adjusted_score": 72,
+        "course_rating": 74.9,
+        "slope_rating": 144,
+        "pcc": 0,
+        "strokes_gained": {
+            "total": 3.3,
+            "off_the_tee": -3.1,
+            "approach": 4.5,
+            "around_the_green": 1.1,
+            "putting": -2.3
+        }
+    },
+    {
+        "course": "Pebble Beach Golf Links",
+        "date": "2026-04-11",
+        "score": 72,
+        "adjusted_score": 72,
+        "course_rating": 74.9,
+        "slope_rating": 144,
+        "pcc": 0,
+        "strokes_gained": null
+    },
+    {
+        "course": "Wildwood Green Golf Club",
+        "date": "2026-05-04",
+        "score": 70,
+        "adjusted_score": 70,
+        "course_rating": 70.9,
+        "slope_rating": 136,
+        "pcc": 0,
+        "strokes_gained": null
+    }
+]
