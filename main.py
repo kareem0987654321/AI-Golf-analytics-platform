@@ -66,13 +66,6 @@ def search_courses(course_name):
 
 def load_round_history():
 
-    print(
-        "\nJSON FILE BIENG LOADED:"
-    )
-
-    print(
-        HISTORY_FILE.resolve()
-    )
     try:
 
         with open(
@@ -142,15 +135,15 @@ def choose_number_of_clusters(dataset):
 
     number_of_rounds = len(dataset)
 
-    # We need enough rounds to compare clusters.
+    # need enough rounds to compare clusters.
     if number_of_rounds < 4:
         return 2
 
     best_k = 2
     best_score = -1
 
-    # We will test between 2 and 5 clusters,
-    # but we cannot have as many clusters
+    #  test between 2 and 5 clusters,
+    #  cannot have as many clusters
     # as data points.
     max_clusters = min(
         5,
@@ -682,17 +675,6 @@ def get_choice_input(prompt, choices):
 
 handicap_round_history = load_round_history()
 
-print(
-    "Real handicap rounds loaded:",
-    len(handicap_round_history)
-)
-
-for round_data in handicap_round_history:
-    print(
-        round_data.get("date"),
-        round_data.get("course"),
-        round_data.get("strokes_gained")
-    )
 
 course_name = input(
     "Enter a golf course to search: "
@@ -1041,10 +1023,6 @@ print(
     len(ml_dataset)
 )
 
-print("\n--- ML Dataset ---")
-
-for row in ml_dataset:
-    print(row)
 
 ml_result = identify_performance_patterns(
     ml_dataset
@@ -1061,14 +1039,11 @@ else:
 
 if ml_analysis is not None:
 
-    print(
-        "\n--- Structured ML Analysis ---"
-)
 
-    print(ml_analysis)
+   # print(ml_analysis)
 
-if ml_result is not None:
-    ml_model, ml_analysis = ml_result
+    if ml_result is not None:
+        ml_model, ml_analysis = ml_result
 
 else:
     ml_model = Noneml_anlysis = None
@@ -1160,7 +1135,7 @@ conversation_history = []
 while True:
 
     user_question = input(
-        "\nAsk the AI a golf question "
+        "\nAsk me a golf question! "
         "(type 'quit' to exit): "
     )
 
